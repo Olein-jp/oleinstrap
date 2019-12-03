@@ -43,11 +43,6 @@ function oleinstrap_theme_support() {
 add_action( 'after_setup_theme', 'oleinstrap_theme_support' );
 
 /**
- * including files
- */
-//require get_template_directory() . '';
-
-/**
  * Register and Enqueue Styles.
  */
 function oleinstrap_register_styles() {
@@ -68,8 +63,8 @@ function oleinstrap_register_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 
-	wp_enqueue_script( 'oleinstrap-js', get_template_directory_uri() . '/assets/js/index.js', array( jquery ), $theme_version, true );
-	wp_script_add_data( 'oleinstrap-js', 'async', true );
+//	wp_enqueue_script( 'oleinstrap-js', get_template_directory_uri() . '/assets/js/index.js', array( jquery ), $theme_version, true );
+//	wp_script_add_data( 'oleinstrap-js', 'async', true );
 }
 add_action( 'wp_enqueue_scripts', 'oleinstrap_register_scripts' );
 
@@ -152,3 +147,8 @@ function oleinstrap_classic_editor_styles() {
 	add_editor_style( $classic_editor_styles );
 }
 add_action( 'init', 'oleinstrap_classic_editor_styles' );
+
+/**
+ * including files
+ */
+//require get_template_directory() . '';
