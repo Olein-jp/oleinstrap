@@ -48,7 +48,7 @@ add_action( 'after_setup_theme', 'oleinstrap_theme_support' );
 function oleinstrap_register_styles() {
 	$theme_version = wp_get_theme()->get( 'Version' );
 
-	wp_enqueue_style( 'oleinstrap-style', get_stylesheet_uri(), array(), $theme_version );
+	wp_enqueue_style( 'oleinstrap-style', get_template_directory_uri() . '/assets/css/style.min.css', array(), $theme_version );
 
 }
 add_action( 'wp_enqueue_scripts', 'oleinstrap_register_styles' );
