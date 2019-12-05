@@ -1,0 +1,13 @@
+/**
+  Over write setting variables
+ */
+$hamburger-padding-x           : 12px;
+$hamburger-padding-y           : 10px;
+$hamburger-layer-width         : 22px;
+$hamburger-layer-height        : 2px;
+$hamburger-layer-spacing       : 4px;
+$hamburger-layer-color         : $text-color;
+$hamburger-layer-border-radius : 4px !default;
+$hamburger-hover-opacity       : 0.7 !default;
+$hamburger-active-layer-color  : $hamburger-layer-color !default;
+$hamburger-active-hover-opacity: $hamburger-hover-opacity !default;

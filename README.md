@@ -1,2 +1,2 @@
 # oleinstrap
-WordPress theme for scratch theme developing.
+受託案件用に作った、個人的に「このコードはほぼ使うでしょ」的なものを盛り込んだものです。ですので「案件によっては使わない」というコードに関しては入れないように努力しました。

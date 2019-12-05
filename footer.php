@@ -10,7 +10,7 @@
 	</div>
 
 	<footer id="site-footer" class="l-site-footer">
-		<p class="p-copyright">©</p>
+		<p class="p-copyright">© copyrights text</p>
 	</footer>
 </div>
 
