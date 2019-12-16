@@ -6,17 +6,26 @@
  */
 
 /**
- * sets up theme defaults and registers support for various WordPress features.
+ * sets up theme support.
+ *
+ * @link   https://developer.wordpress.org/reference/functions/add_theme_support/
+ * @link   https://developer.wordpress.org/themes/basics/theme-functions/
+ * @link   https://developer.wordpress.org/reference/functions/load_theme_textdomain/
+ * @link   https://github.com/WordPress/gutenberg/blob/master/docs/extensibility/theme-support.md
  */
-function oleinstrap_theme_support() {
+add_action( 'after_setup_theme', function() {
+
+	$GLOBALS['content_width'] = 640;
+
+	add_theme_support( 'title-tag' );
+
 	add_theme_support( 'automatic-feed-links' );
 
 	add_theme_support( 'post-thumbnails' );
 
-//	set_post_thumbnail( 1200, 9999 );
-//	add_image_size( 'oleinpress-fullscreen', 1980, 9999 );
+	add_theme_support( 'customize-selective-refresh-widgets' );
 
-	add_theme_support( 'title-tag' );
+	add_theme_support( 'align-wide' );
 
 	add_theme_support(
 		'html5',
@@ -25,48 +34,108 @@ function oleinstrap_theme_support() {
 			'comment-form',
 			'comment-list',
 			'gallery',
-			'caption',
-			'script',
-			'style',
+			'caption'
 		)
 	);
 
-	add_theme_support( 'align-wide' );
+	add_theme_support( 'editor-color-palette', [
+		[
+			'name'  => __( 'Gray' ),
+			'slug'  => 'gray',
+			'color' => '#555555'
+		]
+	] );
 
-	add_theme_support( 'customize-selective-refresh-widgets' );
+	add_theme_support( 'editor-font-sizes', [
+		[
+			'name'      => __( 'Small' ),
+			'shortName' => __( 'S' ),
+			'size'      => 12,
+			'slug'      => 'small'
+		]
+	] );
 
-	global $content_width;
-	if ( ! isset( $content_width ) ) {
-		$content_width = 640;
-	}
-}
-add_action( 'after_setup_theme', 'oleinstrap_theme_support' );
-
-/**
- * Register and Enqueue Styles.
- */
-function oleinstrap_register_styles() {
-	$theme_version = wp_get_theme()->get( 'Version' );
-
-	wp_enqueue_style( 'oleinstrap-style', get_template_directory_uri() . '/assets/css/style.min.css', array(), $theme_version );
-
-}
-add_action( 'wp_enqueue_scripts', 'oleinstrap_register_styles' );
+});
 
 /**
- * Register and Enqueue Scripts.
+ * Enqueue scripts/styles for the front end.
  */
-function oleinstrap_register_scripts() {
-	$theme_version = wp_get_theme()->get( 'Version' );
+add_action( 'wp_enqueue_scripts', function() {
 
-	if ( ( ! is_admin() ) && is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+	// Disable core block styles.
+	wp_dequeue_style( 'wp-block-library' );
+
+	// Load WordPress' comment-reply script where appropriate.
+	if ( is_singular() && get_option( 'thread_comments' ) && comments_open() ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 
-//	wp_enqueue_script( 'oleinstrap-js', get_template_directory_uri() . '/assets/js/index.js', array( jquery ), $theme_version, true );
-//	wp_script_add_data( 'oleinstrap-js', 'async', true );
+	// Enqueue main css style.
+	wp_enqueue_style( 'oleinstrap-style', get_template_directory_uri() . '/assets/css/style.min.css', null, null );
+
+	// Enqueue main JavaScript.
+	wp_enqueue_script( 'oleinstrap-js', get_template_directory_uri() . '/assets/js/index.js', array( jquery ), null, true );
+
+});
+
+/**
+ * Enqueue scripts/styles for the editor.
+ */
+add_action( 'enqueue_block_editor_assets', function() {
+
+	// Enqueue theme editor styles.
+	wp_enqueue_style( 'oleinstrap-editor-style', get_template_directory_uri() . '/assets/css/editor.min.css', null, null );
+
+	// Unregister core block and theme styles.
+	wp_deregister_style( 'wp-block-library' );
+	wp_deregister_style( 'wp-block-library-theme' );
+
+	// Re-register core block and theme styles with an empty string. This is
+	// necessary to get styles set up correctly.
+	wp_register_style( 'wp-block-library', '' );
+	wp_register_style( 'wp-block-library-theme', '' );
+
+});
+
+/**
+ * Enqueue classic editor styles.
+ */
+function oleinstrap_classic_editor_styles() {
+	$classic_editor_styles = array(
+		'/assets/css/editor-classic.min.css',
+	);
+	add_editor_style( $classic_editor_styles );
 }
-add_action( 'wp_enqueue_scripts', 'oleinstrap_register_scripts' );
+//add_action( 'init', 'oleinstrap_classic_editor_styles' );
+
+/**
+ * Register menus.
+ *
+ * @link   https://developer.wordpress.org/reference/functions/register_nav_menus/
+ */
+add_action( 'init', function() {
+	$locations = array(
+		'primary'  => 'Global Menu',
+	);
+	register_nav_menus( [
+		'primary'  => esc_html_x( 'Global Menu', 'nav menu location' )
+	] );
+}, 5 );
+
+/**
+ * Register image sizes.
+ *
+ * @link   https://developer.wordpress.org/reference/functions/set_post_thumbnail_size/
+ * @link   https://developer.wordpress.org/reference/functions/add_image_size/
+ */
+add_action( 'init', function() {
+
+//	Set the 'post thumbnail' size
+//	set_post_thumbnail_size( 200, 100, true );
+
+//	Register custom image sizes.
+//	add_image_size( 'oleinstrap-medium', 750, 422, true );
+});
 
 /**
  * Fix skip link focus in IE11
@@ -79,17 +148,6 @@ function oleinstrap_skip_link_focus_fix() {
 	<?php
 }
 add_action( 'wp_print_footer_scripts', 'oleinstrap_skip_link_focus_fix' );
-
-/**
- * Register menu
- */
-function oleinstrap_menus() {
-	$locations = array(
-		'primary'  => 'Global Menu',
-	);
-	register_nav_menus( $locations );
-}
-add_action( 'init', 'oleinstrap_menus' );
 
 /**
  * about wp_body_open
@@ -112,41 +170,24 @@ function oleinstrap_skip_link() {
 add_action( 'wp_body_open', 'oleinstrap_skip_link', 5 );
 
 /**
- * Register widget areas.
+ * Register sidebars.
  *
- * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
+ * @link   https://developer.wordpress.org/reference/functions/register_sidebar/
+ * @link   https://developer.wordpress.org/reference/functions/register_sidebars/
  */
-function oleinstrap_sidebar_registration() {
-	$shared_args = array(
-		'before_title'  => '<h2 class="c-widget-title">',
-		'after_title'   => '</h2>',
-		'before_widget' => '<div class="c-widget %2$s"><div class="c-widget__content">',
-		'after_widget'  => '</div></div>',
-	);
+add_action( 'widgets_init', function() {
+	$args = [
+		'before_title'  => '<h3 class="c-widget-title">',
+		'after_title'   => '</h3>',
+		'before_widget' => '<section class="c-widget %2$s"><div class="c-widget__content">',
+		'after_widget'  => '</div></section>',
+	];
 
-	register_sidebar(
-		array_merge(
-			$shared_args,
-			array(
-				'name'        => 'Sidebar',
-				'id'          => 'sidebar-1',
-				'description' => 'Widgets in this area will be displayed in the sidebar may be.',
-			)
-		)
-	);
-}
-add_action( 'widgets_init', 'oleinstrap_sidebar_registration' );
-
-/**
- * Enqueue classic editor styles.
- */
-function oleinstrap_classic_editor_styles() {
-	$classic_editor_styles = array(
-		'/assets/css/editor-style-classic.css',
-	);
-	add_editor_style( $classic_editor_styles );
-}
-add_action( 'init', 'oleinstrap_classic_editor_styles' );
+	register_sidebar( [
+		'id' => 'primary',
+		'name' => esc_html_x( 'Primary', 'sidebar' )
+	] + $args );
+} );
 
 /**
  * including files
