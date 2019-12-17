@@ -84,7 +84,7 @@ add_action( 'wp_enqueue_scripts', function() {
 add_action( 'enqueue_block_editor_assets', function() {
 
 	// Enqueue theme editor styles.
-	wp_enqueue_style( 'oleinstrap-editor-style', get_template_directory_uri() . '/assets/css/editor.min.css', null, null );
+	wp_enqueue_style( 'oleinstrap-editor-style', get_template_directory_uri() . '/assets/css/editor-block.min.css', null, null );
 
 	// Unregister core block and theme styles.
 	wp_deregister_style( 'wp-block-library' );
