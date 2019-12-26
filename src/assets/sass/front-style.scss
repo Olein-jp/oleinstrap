@@ -1,28 +1,14 @@
-@import "core/core";
-@import "foundation/foundation";
+////
+/// Primary screen stylesheet.
+/// Add new style for module file.
+///
+/// @author Koji Kuno <info@olein-design.com>
+////
 
-/*--------------------------------------------------------------
-    Layout
---------------------------------------------------------------*/
-.l-xxx {
-
-}
-
-/*--------------------------------------------------------------
-    Component
---------------------------------------------------------------*/
-.c-xxx {
-
-}
-
-/*--------------------------------------------------------------
-    Project
---------------------------------------------------------------*/
-.p-xxx {
-
-}
-
-/*--------------------------------------------------------------
-    utilities
---------------------------------------------------------------*/
+@import "settings/settings";
+@import "tools/tools";
+@import "base/base";
+@import "smaccs/smaccs";
+@import "blocks/blocks";
+@import "vendor/vendor";
 @import "utility/utility";

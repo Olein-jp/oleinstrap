@@ -1,0 +1,37 @@
+////
+/// Cover block.
+///
+/// @author Koji Kuno <info@olein-design.com>
+////
+
+.wp-block-cover {
+
+  &.has-parallax {}
+
+  &.has-background-dim::before {}
+
+  @for $dim from 1 through 10 {
+
+    &.has-background-dim-#{ $dim * 10 }::before {
+      //background-color: rgba( color( black ), $dim * 0.1 );
+    }
+  }
+
+  &.has-left-content {}
+
+  &.has-right-content {}
+
+  &__video-background {}
+}
+
+.wp-block-cover-text {
+  a,
+  a:hover,
+  a:focus,
+  a:active {
+  }
+}
+
+.has-left-content .wp-block-cover-text {}
+
+.has-right-content .wp-block-cover-text {}

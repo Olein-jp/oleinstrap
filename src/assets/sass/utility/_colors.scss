@@ -1,0 +1,18 @@
+@import "../settings/variables";
+////
+/// Create CSS classes for color palette.
+///
+/// @author Koji Kuno <info@olein-design.com>
+////
+
+@each $color-name, $color-value in block-colors() {
+
+  .has-#{ $color-name }-color {
+    color : #{ $color-value };
+  }
+
+  .has-#{ $color-name }-background-color {
+    background-color: #{ $color-value };
+  }
+
+}

@@ -1,3 +1,14 @@
-body {
-  //background-color: yellow;
+////
+/// Editor stylesheet.
+///
+/// This is the main editor stylesheet.
+/// This is used for the Block Editor(WordPress 5.0+ which called Gutenberg).
+/// And This is not used for Classic Editor
+///
+/// @author Koji Kuno <info@olein-design.com>
+////
+
+.editor-styles-wrapper {
+  @import "blocks/blocks";
+  @import "utility/utility";
 }

@@ -1,22 +1,3 @@
-@charset "UTF-8";
-/**
-  Font Family Setting
- */
-/**
-  Default Colors
- */
-/**
-  Brand Color
- */
-/**
-  Setting Color
- */
-/**
-  SNS Colors
- */
-/**
-  layouts
- */
 /*
 html5doctor.com Reset Stylesheet
 v1.6.1
@@ -105,60 +86,8 @@ hr {
 input, select {
   vertical-align: middle; }
 
-/*--------------------------------------------------------------
-# Accessibility
---------------------------------------------------------------*/
-/* Text meant only for screen readers. */
-.screen-reader-text {
-  border: 0;
-  clip: rect(1px, 1px, 1px, 1px);
-  -webkit-clip-path: inset(50%);
-          clip-path: inset(50%);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute !important;
-  width: 1px;
-  word-wrap: normal !important;
-  /* Many screen reader and browser combinations announce broken words as they would appear visually. */ }
-  .screen-reader-text:focus {
-    background-color: #f1f1f1;
-    border-radius: 3px;
-    -webkit-box-shadow: 0 0 2px 2px rgba(0, 0, 0, .6);
-            box-shadow: 0 0 2px 2px rgba(0, 0, 0, .6);
-    clip: auto !important;
-    -webkit-clip-path: none;
-            clip-path: none;
-    color: #21759b;
-    display: block;
-    font-size: 14px;
-    font-size: 14px;
-    font-size: 1.4rem;
-    font-weight: bold;
-    height: auto;
-    left: 5px;
-    line-height: normal;
-    padding: 15px 23px 14px;
-    text-decoration: none;
-    top: 5px;
-    width: auto;
-    z-index: 100000;
-    /* Above WP toolbar. */ }
-
-/* Do not show the outline on the skip link target. */
-#content[tabindex="-1"]:focus {
-  outline: 0; }
-
-html {
-  font-family: "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", "游ゴシック体", "メイリオ ", "Roboto Bold", "03 スマートフォント", "Braisetto Regular", "Thonburi Bold", sans-serif;
-  font-size: 62.5%; }
-
-body {
-  font-size: 16px;
-  font-size: 1.6rem;
-  color: #0A0A0A;
-  word-wrap: break-word; }
+.wp-block-image img {
+  width: 100%; }
 
 /**
   code overwrite variables
@@ -1232,21 +1161,112 @@ body {
     -webkit-transform: rotate(-90deg);
             transform: rotate(-90deg); }
 
-/*--------------------------------------------------------------
-    Layout
---------------------------------------------------------------*/
-/*--------------------------------------------------------------
-    Component
---------------------------------------------------------------*/
-/*--------------------------------------------------------------
-    Project
---------------------------------------------------------------*/
-/*--------------------------------------------------------------
-    utilities
---------------------------------------------------------------*/
-/*--------------------------------------------------------------
-    margin & padding
---------------------------------------------------------------*/
+.screen-reader-text {
+  clip: rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path: inset(50%);
+          clip-path: inset(50%);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  word-wrap: normal;
+  border: none; }
+  .screen-reader-text:active, .screen-reader-text:focus {
+    clip: auto;
+    -webkit-clip-path: none;
+            clip-path: none;
+    display: block;
+    height: auto;
+    width: auto;
+    z-index: 100000;
+    text-decoration: none; }
+
+.alignleft {
+  display: inline;
+  float: left;
+  margin-right: 1.5em; }
+
+.alignright {
+  display: inline;
+  float: right;
+  margin-left: 1.5em; }
+
+.aligncenter {
+  clear: both;
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
+.alignfull,
+.alignwide {
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  width: auto;
+  max-width: 100vw; }
+
+.has-white-color {
+  color: #ffffff; }
+
+.has-white-background-color {
+  background-color: #ffffff; }
+
+.has-black-color {
+  color: #000000; }
+
+.has-black-background-color {
+  background-color: #000000; }
+
+.has-charcoal-color {
+  color: #282c34; }
+
+.has-charcoal-background-color {
+  background-color: #282c34; }
+
+.has-regent-color {
+  color: #8c97a7; }
+
+.has-regent-background-color {
+  background-color: #8c97a7; }
+
+.has-husk-color {
+  color: #b9a364; }
+
+.has-husk-background-color {
+  background-color: #b9a364; }
+
+.has-red-stage-color {
+  color: #b15330; }
+
+.has-red-stage-background-color {
+  background-color: #b15330; }
+
+.has-small-font-size {
+  font-size: 12px; }
+
+.has-regular-font-size {
+  font-size: 16px; }
+
+.has-large-font-size {
+  font-size: 36px; }
+
+.has-larger-font-size {
+  font-size: 48px; }
+
+img.wp-smiley,
+img.emoji {
+  display: inline;
+  width: 1em;
+  height: 1em;
+  margin: 0 .07em;
+  padding: 0;
+  vertical-align: -0.1em;
+  background: none;
+  border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none; }
+
 .u-mt-0 {
   margin-top: 0px; }
 

@@ -15,6 +15,9 @@
  */
 add_action( 'after_setup_theme', function() {
 
+	///
+	// Check and sync in 'src/assets/sass/settings/_variables.scss'.
+	///
 	$GLOBALS['content_width'] = 640;
 
 	add_theme_support( 'title-tag' );
@@ -41,25 +44,67 @@ add_action( 'after_setup_theme', function() {
 		)
 	);
 
+	// Editor color palette.
+	// Define in the 'settings/_variables.scss' file and check syncing.
 	add_theme_support( 'editor-color-palette', [
 		[
-			'name'  => __( 'Gray' ),
-			'slug'  => 'gray',
-			'color' => '#555555'
+			'name'  => 'White',
+			'slug'  => 'white',
+			'color' => '#ffffff'
 		],
 		[
-			'name'  => __( 'Red' ),
-			'slug'  => 'red',
-			'color' => 'red'
+			'name'  => 'Black',
+			'slug'  => 'black',
+			'color' => '#000000'
+		],
+		[
+			'name'  => 'Charcoal',
+			'slug'  => 'charcoal',
+			'color' => '#282c34'
+		],
+		[
+			'name'  => 'Regent',
+			'slug'  => 'regent',
+			'color' => '#8c97a7'
+		],
+		[
+			'name'  => 'Husk',
+			'slug'  => 'husk',
+			'color' => '#b9a364'
+		],
+		[
+			'name'  => 'red stage',
+			'slug'  => 'red-stage',
+			'color' => '#b15330'
 		]
 	] );
 
+	// Editor block font sizes.
+	// Define in the 'settings/_variables.scss file and check syncing.
 	add_theme_support( 'editor-font-sizes', [
 		[
-			'name'      => __( 'Small' ),
-			'shortName' => __( 'S' ),
+			'name'      => 'Small',
+			'shortName' => 'S',
 			'size'      => 12,
 			'slug'      => 'small'
+		],
+		[
+			'name'      => 'Regular',
+			'shortName' => 'R',
+			'size'      => 16,
+			'slug'      => 'regular'
+		],
+		[
+			'name'      => 'Large',
+			'shortName' => 'L',
+			'size'      => 32,
+			'slug'      => 'large'
+		],
+		[
+			'name'      => 'Larger',
+			'shortName' => 'LL',
+			'size'      => 48,
+			'slug'      => 'larger'
 		]
 	] );
 

@@ -1,3 +1,10 @@
+@import "../settings/variables";
+////
+/// Default elements.
+///
+/// @author Koji Kuno <info@olein-design.com>
+////
+
 html {
   font-family: $base-font-family;
   font-size: 62.5%;
@@ -7,4 +14,5 @@ body {
   font-size: 1.6rem;
   color: $text-color;
   word-wrap: break-word;
+  overflow-x: hidden;
 }

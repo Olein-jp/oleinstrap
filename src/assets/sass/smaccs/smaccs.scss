@@ -1,0 +1,15 @@
+////
+/// SMACCS stylesheet import.
+///
+/// Base   : html, body, a, p, pre,,,
+/// Layout : site-header, site-footer, sidebar, widget,,,
+/// Module : Reusable parts styles
+/// State  : is-active, is-close,,,
+/// Theme  : Visual template
+///
+/// @author Koji Kuno <info@olein-design.com>
+////
+@import "layout";
+@import "module";
+@import "state";
+@import "theme";

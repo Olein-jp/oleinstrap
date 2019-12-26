@@ -37,11 +37,11 @@
     "rimraf": "^3.0.0"
   },
   "scripts": {
-    "cleanup:packages": "rimraf assets/packages && mkdir -p assets/packages",
-    "packages:humburgers": "cpx 'node_modules/hamburgers/**' 'src/assets/packages/hamburgers'",
-    "packages:superfish": "cpx 'node_modules/superfish/dist/**' 'src/assets/packages/superfish'",
-    "packages:slick": "cpx 'node_modules/slick-carousel/slick/**' 'src/assets/packages/slick'",
-    "packages:move": "cpx 'src/assets/packages/**' 'assets/packages'",
+    "cleanup:packages": "rimraf assets/vendor && mkdir -p assets/vendor",
+    "packages:humburgers": "cpx 'node_modules/hamburgers/**' 'src/assets/vendor/hamburgers'",
+    "packages:superfish": "cpx 'node_modules/superfish/dist/**' 'src/assets/vendor/superfish'",
+    "packages:slick": "cpx 'node_modules/slick-carousel/slick/**' 'src/assets/vendor/slick'",
+    "packages:move": "cpx 'src/assets/vendor/**' 'assets/vendor'",
     "packages": "npm run cleanup:packages && npm-run-all -p packages:*",
     "start": "gulp",
     "build": "npm run packages && gulp build"

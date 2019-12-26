@@ -1,0 +1,14 @@
+@import "../settings/variables";
+////
+/// Create CSS classes for font sizes.
+///
+/// @author Koji Kuno <info@olein-design.com>
+////
+
+@each $font-size-name, $font-size-value in editor-font-sizes() {
+
+  .has-#{ $font-size-name }-font-size {
+    font-size: #{ $font-size-value };
+  }
+
+}

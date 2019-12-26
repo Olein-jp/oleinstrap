@@ -1,3 +1,12 @@
+////
+/// Break point settings
+///
+/// @author Koji Kuno <info@olein-design.com>
+////
+
+///
+// Minimal width
+///
 $breakpoint-up: (
         'sm' : 'screen and (min-width: 480px)',
         'md' : 'screen and (min-width: 768px)',
@@ -5,6 +14,9 @@ $breakpoint-up: (
         'xl' : 'screen and (min-width: 1200px)',
 ) !default;
 
+///
+// Max width
+///
 $breakpoint-down: (
         'xs' : 'screen and (max-width: 479px)',
         'sm' : 'screen and (max-width: 767px)',
@@ -12,6 +24,9 @@ $breakpoint-down: (
         'lg' : 'screen and (max-width: 1199px)',
 ) !default;
 
+///
+// Set Mixin
+///
 @mixin mq-up($breakpoint: sm) {
   @media #{map-get($breakpoint-up, $breakpoint)} {
     @content;

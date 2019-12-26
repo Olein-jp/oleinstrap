@@ -1,0 +1,21 @@
+////
+/// Image block.
+///
+/// @author Koji Kuno <info@olein-design.com>
+////
+
+.wp-block-image {
+  img {
+    width: 100%;
+  }
+
+  &.is-resized {
+    figcaption {
+
+    }
+    img {
+
+    }
+  }
+  figcaption {}
+}

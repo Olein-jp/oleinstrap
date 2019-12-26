@@ -1,0 +1,35 @@
+@import "../../settings/mediaquery";
+////
+/// Media text block.
+///
+/// @author Koji Kuno <info@olein-design.com>
+////
+
+.wp-block-media-text {
+
+  &.has-media-on-the-right {
+
+  }
+
+  &__media {
+
+  }
+
+  &__content {
+
+  }
+
+  > figure > img,
+  > figure > video {
+
+  }
+
+  @include mq-down(xs) {
+    &.is-stacked-on-mobile {
+      &.has-media-on-the-right {
+
+      }
+    }
+  }
+
+}

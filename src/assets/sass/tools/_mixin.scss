@@ -1,3 +1,8 @@
+////
+/// Mixins
+///
+/// @author Koji Kuno <info@olein-design.com>
+////
 @mixin link( $color-base: $base-font-color_link ) {
   color: $color-base;
   &:hover,
