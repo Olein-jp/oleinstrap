@@ -27,6 +27,9 @@ add_action( 'after_setup_theme', function() {
 
 	add_theme_support( 'align-wide' );
 
+	add_theme_support( 'editor-styles' );
+	add_editor_style( 'assets/css/editor-style.min.css' );
+
 	add_theme_support(
 		'html5',
 		array(
@@ -43,6 +46,11 @@ add_action( 'after_setup_theme', function() {
 			'name'  => __( 'Gray' ),
 			'slug'  => 'gray',
 			'color' => '#555555'
+		],
+		[
+			'name'  => __( 'Red' ),
+			'slug'  => 'red',
+			'color' => 'red'
 		]
 	] );
 
@@ -62,16 +70,13 @@ add_action( 'after_setup_theme', function() {
  */
 add_action( 'wp_enqueue_scripts', function() {
 
-	// Disable core block styles.
-	wp_dequeue_style( 'wp-block-library' );
-
 	// Load WordPress' comment-reply script where appropriate.
 	if ( is_singular() && get_option( 'thread_comments' ) && comments_open() ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 
 	// Enqueue main css style.
-	wp_enqueue_style( 'oleinstrap-style', get_template_directory_uri() . '/assets/css/style.min.css', null, null );
+	wp_enqueue_style( 'oleinstrap-front-style', get_template_directory_uri() . '/assets/css/front-style.min.css', null, null );
 
 	// Enqueue main JavaScript.
 	wp_enqueue_script( 'oleinstrap-js', get_template_directory_uri() . '/assets/js/index.js', array( jquery ), null, true );
@@ -81,32 +86,22 @@ add_action( 'wp_enqueue_scripts', function() {
 /**
  * Enqueue scripts/styles for the editor.
  */
-add_action( 'enqueue_block_editor_assets', function() {
+//add_action( 'enqueue_block_editor_assets', function() {
 
 	// Enqueue theme editor styles.
-	wp_enqueue_style( 'oleinstrap-editor-style', get_template_directory_uri() . '/assets/css/editor-block.min.css', null, null );
+	// wp_enqueue_style( 'oleinstrap-editor-style', get_template_directory_uri() . '/assets/css/editor-block.min.css', null, null );
 
 	// Unregister core block and theme styles.
-	wp_deregister_style( 'wp-block-library' );
-	wp_deregister_style( 'wp-block-library-theme' );
+	//	wp_deregister_style( 'wp-block-library' );
+	//	wp_deregister_style( 'wp-block-library-theme' );
 
 	// Re-register core block and theme styles with an empty string. This is
 	// necessary to get styles set up correctly.
-	wp_register_style( 'wp-block-library', '' );
-	wp_register_style( 'wp-block-library-theme', '' );
+	//	wp_register_style( 'wp-block-library', '' );
+	//	wp_register_style( 'wp-block-library-theme', '' );
 
-});
+//});
 
-/**
- * Enqueue classic editor styles.
- */
-function oleinstrap_classic_editor_styles() {
-	$classic_editor_styles = array(
-		'/assets/css/editor-classic.min.css',
-	);
-	add_editor_style( $classic_editor_styles );
-}
-//add_action( 'init', 'oleinstrap_classic_editor_styles' );
 
 /**
  * Register menus.
