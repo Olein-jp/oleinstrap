@@ -17,7 +17,8 @@ const imageminPngquant = require( "imagemin-pngquant" );
 const imageminSvgo = require( "imagemin-svgo" );
 
 const srcPath = {
-    css: 'src/assets/sass/*.scss',
+    scss: 'src/assets/sass/**/*',
+    css: 'src/assets/sass/**.scss',
     js: 'src/assets/js/*.js',
     img: 'src/assets/images/**/*',
     php: '**/*.php',
@@ -132,7 +133,7 @@ const browserSyncReload = ( done ) => {
 }
 
 const watchFiles = () => {
-    watch( srcPath.css, series( cssSass, browserSyncReload ) )
+    watch( srcPath.scss, series( cssSass, browserSyncReload ) )
     watch( srcPath.js, series( jsBabel, browserSyncReload ) )
     watch ( srcPath.php, browserSyncReload )
 }
