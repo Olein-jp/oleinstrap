@@ -232,4 +232,4 @@ add_action( 'widgets_init', function() {
 /**
  * including files
  */
-//require get_template_directory() . '';
+require get_template_directory() . '/inc/blocks/index.php';

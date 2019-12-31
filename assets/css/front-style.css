@@ -117,6 +117,9 @@ body {
 body {
   background-color: yellow; }
 
+.wp-block-button {
+  background-color: purple; }
+
 .wp-block-image img {
   width: 100%; }
 
