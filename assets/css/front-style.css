@@ -97,6 +97,26 @@ body {
   word-wrap: break-word;
   overflow-x: hidden; }
 
+.container {
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px; }
+  @media screen and (min-width: 768px) {
+    .container {
+      width: 750px;
+      margin: 0 auto;
+      padding-right: 0;
+      padding-left: 0; } }
+  @media screen and (min-width: 992px) {
+    .container {
+      width: 960px; } }
+  @media screen and (min-width: 1200px) {
+    .container {
+      width: 1120px; } }
+
+body {
+  background-color: yellow; }
+
 .wp-block-image img {
   width: 100%; }
 

@@ -3,6 +3,43 @@
 ///
 /// @author Koji Kuno <info@olein-design.com>
 ////
+
+////
+// Components
+///
+
+// container
+.container {
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  @include mq-up(md) {
+    width: 750px;
+    margin: 0 auto;
+    padding-right: 0;
+    padding-left: 0;
+  }
+  @include mq-up(lg) {
+    width: 960px;
+  }
+  @include mq-up(xl) {
+    width: 1120px;
+  }
+}
+
+body {
+  background-color: yellow;
+}
+
+////
+// site header
+///
+.site-header {
+  &__inner {
+
+  }
+}
+
 .btn {
 
 }
