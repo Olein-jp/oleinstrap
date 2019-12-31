@@ -16,11 +16,23 @@ npm run start
 
 ## ビルド
 
+### タスクランナー
+
 ```$xslt
-bpm run build
+npm run build
 ```
 
-一度、`assets`ディレクトリ内をクリーンにして、パッケージングします。
+一度、`assets`ディレクトリ内をクリーンにして、パッケージングします。詳細は`gulpfile.js`を確認してください。
+
+### ビルドブロック
+
+```
+npm run build-blocks
+```
+
+`inc/blocks/index.php`と`inc/blocks/src`にあるJS、Sassファイルをコンパイルして`inc/blocks/build`に書き出します。
+
+処理の詳細は`package.json`を確認してください。
 
 ## 構造
 ```
@@ -89,6 +101,16 @@ bpm run build
             /hamburgers
             /slick
             /superfish
+/inc
+    /blocks
+        index.php
+        /src
+            index.js // コンパイルされて build へ
+            style.scss // コンパイルされて build へ
+        /build
+            index.js
+            style.css
+            index.asset.php
 _front-page.php
 footer.php
 functions.php
