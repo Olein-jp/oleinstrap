@@ -1,16 +1,19 @@
 ///
 // Styles for extending and original blocks
+//
+// @link '/wp-includes/css/dist/block-library/style.css'
 ///
 .is-style-container {
   width: 50vw;
   margin: 0 auto;
 }
 
-
-.wp-block-button.is-style-test-button {
-  background-color: pink;
-  .wp-block-button__link {
-    background-color: red;
-    font-size: 2em;
+.wp-block-button {
+  &.is-style-test-button {
+    background-color: salmon;
+    .wp-block-button__link {
+      background-color: red;
+      font-size: 2em;
+    }
   }
 }

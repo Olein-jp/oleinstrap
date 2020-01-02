@@ -19,12 +19,14 @@ const imageminSvgo = require( "imagemin-svgo" );
 const srcPath = {
     scss: 'src/assets/sass/**/*',
     css: 'src/assets/sass/**.scss',
+    blockScss: 'inc/blocks/src/style.scss',
     js: 'src/assets/js/*.js',
     img: 'src/assets/images/**/*',
     php: '**/*.php',
 }
 const destPath = {
     css: 'assets/css/',
+    blockCss: 'inc/blocks/build/',
     js: 'assets/js/',
     img: 'assets/images/'
 }
@@ -101,6 +103,20 @@ const cssSass = () => {
         .pipe( dest(destPath.css) )
 }
 
+const blockSass = () => {
+    return src(srcPath.blockScss)
+        .pipe(
+            plumber(
+                {
+                    errorHandler: notify.onError( 'Error: <%= error.message %>')
+                }
+            )
+        )
+        .pipe( sass() )
+        .pipe( postcss( [cssnext(browsers)] ) )
+        .pipe( dest(destPath.blockCss) )
+}
+
 const jsBabel = () => {
     return src(srcPath.js)
         .pipe(
@@ -134,9 +150,10 @@ const browserSyncReload = ( done ) => {
 
 const watchFiles = () => {
     watch( srcPath.scss, series( cssSass, browserSyncReload ) )
+    watch( srcPath.blockScss, series( blockSass, browserSyncReload ) )
     watch( srcPath.js, series( jsBabel, browserSyncReload ) )
-    watch ( srcPath.php, browserSyncReload )
+    watch( srcPath.php, browserSyncReload )
 }
 
-exports.default = series( series( cssSass, jsBabel ), parallel( watchFiles, browserSyncFunc ) );
-exports.build = series( delDir, cssSass, jsBabel, imgImagemin );
+exports.default = series( series( cssSass, jsBabel, blockSass ), parallel( watchFiles, browserSyncFunc ) );
+exports.build = series( delDir, cssSass, jsBabel, blockSass, imgImagemin );

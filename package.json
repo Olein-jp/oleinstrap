@@ -48,11 +48,10 @@
     "packages:slick": "cpx 'node_modules/slick-carousel/slick/**' 'src/assets/vendor/slick'",
     "packages:move": "cpx 'src/assets/vendor/**' 'assets/vendor'",
     "packages": "npm run cleanup:packages && npm-run-all -p packages:*",
-    "start": "gulp",
-    "build": "npm run packages && gulp build",
     "build-blocks:js": "wp-scripts build inc/blocks/src/index.js --output-path=inc/blocks/build",
-    "build-blocks:css": "node-sass inc/blocks/src/ -o inc/blocks/build && postcss inc/blocks/build/*.css -r",
-    "build-blocks": "npm-run-all -p build-blocks:*"
+    "build-blocks": "npm-run-all -p build-blocks:*",
+    "start": "gulp",
+    "build": "npm run packages && gulp build && npm run build-blocks"
   },
   "repository": {
     "type": "git",
