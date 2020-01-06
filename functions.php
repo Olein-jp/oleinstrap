@@ -233,3 +233,5 @@ add_action( 'widgets_init', function() {
  * including files
  */
 require get_template_directory() . '/inc/blocks/index.php';
+
+require get_template_directory() . '/inc/comment-setting.php';

@@ -10,7 +10,7 @@
 get_header();
 ?>
 	<div id="primary" class="l-content-area">
-		<main id="site-content" role="main">
+		<main id="site-content" class="container" role="main">
 		<?php
 		while ( have_posts() ) :
 			the_post();
@@ -50,6 +50,13 @@ get_header();
 					</div>
 				<?php endif; ?>
 			</article>
+
+		<?php
+			// If comments are open or we have at least one comment, load up the comment template.
+			if ( comments_open() || get_comments_number() ) :
+				comments_template();
+			endif;
+			?>
 		<?php endwhile; ?>
 		</main>
 	</div>

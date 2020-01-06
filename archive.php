@@ -1,6 +1,6 @@
 <?php
 /**
- * index.php
+ * archive.php
  *
  * @package oleinstrap
  * @author Olein-jp
@@ -10,7 +10,7 @@
 get_header();
 ?>
 <div id="primary" class="l-content-area">
-	<main id="site-content" role="main">
+	<main id="site-content" class="container" role="main">
 		<?php
 		if ( have_posts() ) : while ( have_posts() ) : the_post();
 			?>
