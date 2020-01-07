@@ -152,8 +152,9 @@ const watchFiles = () => {
     watch( srcPath.scss, series( cssSass, browserSyncReload ) )
     watch( srcPath.blockScss, series( blockSass, browserSyncReload ) )
     watch( srcPath.js, series( jsBabel, browserSyncReload ) )
+    watch( srcPath.img, series( imgImagemin, browserSyncReload ) )
     watch( srcPath.php, browserSyncReload )
 }
 
-exports.default = series( series( cssSass, jsBabel, blockSass ), parallel( watchFiles, browserSyncFunc ) );
+exports.default = series( series( cssSass, jsBabel, imgImagemin, blockSass ), parallel( watchFiles, browserSyncFunc ) );
 exports.build = series( delDir, cssSass, jsBabel, blockSass, imgImagemin );
